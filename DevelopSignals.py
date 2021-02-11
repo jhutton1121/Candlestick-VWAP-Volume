@@ -16,8 +16,8 @@ def vwap(df):
 def bands(df):
     df['rolling_mean'] = df.vwap.rolling(10).mean()
     df['rolling_std'] = df.vwap.rolling(10).std()
-    df['upper_band'] = df.rolling_mean + 2*df.rolling_std
-    df['lower_band'] = df.rolling_mean - 2*df.rolling_std
+    df['upper_band'] = df.vwap + 2*df.rolling_std
+    df['lower_band'] = df.vwap - 2*df.rolling_std
     
     return df
     
