@@ -4,7 +4,6 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 stock = "MSFT"
-stock1 = "GME"
 
 df = web.DataReader(stock, data_source = 'yahoo', start = '01-01-2019')
 
