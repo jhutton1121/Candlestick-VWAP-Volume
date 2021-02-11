@@ -26,7 +26,7 @@ def bands(df):
 df = df.groupby(df.index, group_keys = False).apply(vwap)
 df = bands(df)
 
-trace1 = {
+trace_candle = {
     'x': df.index,
     'open':df.Open,
     'close': df.Close,
@@ -37,25 +37,25 @@ trace1 = {
     'showlegend': True
 }
 
-trace2 = {
+trace_vwap = {
     'x': df.index,
     'y': df.vwap,
     'name': 'vwap'
 }
 
-trace3  = {
+trace_res  = {
     'x': df.index,
     'y': df.upper_band,
     'name': 'resistance'
 }
 
-trace4 = {
+trace_sup = {
     'x' : df.index,
     'y' : df.lower_band,
     'name':'support'
 }
 
-trace5 = {
+trace_vol = {
     'x': df.index,
     'y': df.Volume,
     'name':'volume'
@@ -67,9 +67,9 @@ fig = make_subplots(rows=2, cols=1, shared_xaxes=True,
 
 
 
-fig.add_trace(go.Candlestick(trace1), row = 1, col = 1)
-fig.add_trace(go.Scatter(trace2), row = 1, col = 1)
-fig.add_trace(go.Scatter(trace3), row = 1, col = 1)
-fig.add_trace(go.Scatter(trace4), row = 1, col = 1)
-fig.add_trace(go.Bar(trace5), row = 2, col =1)
+fig.add_trace(go.Candlestick(trace_candle), row = 1, col = 1)
+fig.add_trace(go.Scatter(trace_vwap), row = 1, col = 1)
+fig.add_trace(go.Scatter(trace_sup), row = 1, col = 1)
+fig.add_trace(go.Scatter(trace_res), row = 1, col = 1)
+fig.add_trace(go.Bar(trace_vol), row = 2, col =1)
 fig.show()
